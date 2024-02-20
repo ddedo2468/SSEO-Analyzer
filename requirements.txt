@@ -1,0 +1,6 @@
+Flask
+Flask-SQLAlchemy
+flask-cors
+requests
+beautifulsoup4
+nltk
