@@ -8,7 +8,7 @@ def analyze_head(url):
     title = soup.find('title').get_text()
     if title:
         results['title'] = 1
-        result['title_length'] = len(title)
+        results['title_length'] = len(title)
     else:
         results['title'] = 0
     
