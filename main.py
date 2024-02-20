@@ -31,14 +31,27 @@ def analyze_body(url):
         results['h1'] = 0
     
     hs = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    good = []
+    h1_count = 0
+    stack = []
 
     for h in soup.find_all(hs):
-        if h.name not in good:
-            good.append(f"{h.name}")
+        level = int(h.name[1])
+        
+        if h.name == 'h1':
+            h1_count += 1
+            if h1_count > 1:
+                results['h1_count'] = h1_count
+        while stack and stack[-1] >= level:
+            stack.pop()
+        
+        if stack and stack[-1] != level - 1:
+            results['h_tags_order'] = 1
+        else:
+            results['h_tags_order'] = 0
 
-    print(good)
+        stack.append(level)
 
+    return results
 
 print(analyze_head('https://blog.boot.dev/python/python-for-web-development/'))
-analyze_body('https://blog.boot.dev/python/python-for-web-development/')
+print(analyze_body('https://blog.boot.dev/python/python-for-web-development/'))
