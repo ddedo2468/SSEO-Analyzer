@@ -1,5 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('stopwords')
+nltk.download('punkt')
 
 def analyze_head(url):
     results = {}
@@ -19,6 +23,7 @@ def analyze_head(url):
         results['description'] = 0
 
     return results
+
 
 def analyze_body(url):
     results = {}
@@ -50,7 +55,28 @@ def analyze_body(url):
 
         stack.append(level)
     results ['h1_count'] = h1_count
+    
+    if soup.find('img', alt=''):
+        results['img_alt'] = 0
+    else:
+        results['img_alt'] = 1
+
+    body = soup.find('body').text 
+    
+    words = [i.lower() for i in word_tokenize(body)]
+    
+    with open('english', 'r') as file:
+        stopwords = [line.strip() for line in file]
+    
+    new_words = []
+
+    for i in words:
+        if i not in stopwords and i.isalpha():
+            new_words.append(i)
+    
+    print(new_words)
     return results
+
 
 print(analyze_head('https://blog.boot.dev/python/python-for-web-development/'))
 print(analyze_body('https://blog.boot.dev/python/python-for-web-development/'))
