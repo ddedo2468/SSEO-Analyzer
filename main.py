@@ -39,8 +39,7 @@ def analyze_body(url):
         
         if h.name == 'h1':
             h1_count += 1
-            if h1_count > 1:
-                results['h1_count'] = h1_count
+
         while stack and stack[-1] >= level:
             stack.pop()
         
@@ -50,7 +49,7 @@ def analyze_body(url):
             results['h_tags_order'] = 0
 
         stack.append(level)
-
+    results ['h1_count'] = h1_count
     return results
 
 print(analyze_head('https://blog.boot.dev/python/python-for-web-development/'))
