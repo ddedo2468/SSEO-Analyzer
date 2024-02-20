@@ -31,7 +31,13 @@ def analyze_body(url):
         results['h1'] = 0
     
     hs = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    print(soup.find_all(hs))
+    good = []
+
+    for h in soup.find_all(hs):
+        if h.name not in good:
+            good.append(f"{h.name}")
+
+    print(good)
 
 
 print(analyze_head('https://blog.boot.dev/python/python-for-web-development/'))
