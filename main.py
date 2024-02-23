@@ -2,8 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import nltk
 from nltk.tokenize import word_tokenize
-nltk.download('stopwords')
-nltk.download('punkt')
+from nltk import bigrams
+#nltk.download('stopwords')
+#nltk.download('punkt')
 
 def analyze_head(url):
     results = {}
@@ -74,7 +75,12 @@ def analyze_body(url):
         if i not in stopwords and i.isalpha():
             new_words.append(i)
     
-    print(new_words)
+    freq = nltk.FreqDist(new_words)
+    keywords= freq.most_common(10)
+    new_bigrams = list(bigrams(new_words))
+    bi_freq = nltk.FreqDist(new_bigrams).most_common(10)
+    most_common_bigram_strings = [" ".join(bigram) for bigram, freq in bi_freq]
+    results['keywords'] = most_common_bigram_strings
     return results
 
 
