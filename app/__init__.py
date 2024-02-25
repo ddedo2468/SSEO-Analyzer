@@ -11,5 +11,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+from .auth import auth
+
+app.register_blueprint(auth, url_prefix='/')
+
 
 from app.models import User, URL
