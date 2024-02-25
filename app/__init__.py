@@ -6,7 +6,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://username:password@hostname/database_name'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/seo-analyzer'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+
+
+from app.models import User, URL

@@ -1,4 +1,7 @@
+from sqlalchemy import JSON
 from app import db
+from datetime import datetime
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,6 +14,7 @@ class User(db.Model):
 class URL(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    created_at = db.Column(db.DateTime, default=datetime.now())
     title = db.Column(db.Boolean, default=False, nullable=False)
     title_length = db.Column(db.Integer)
     description = db.Column(db.Boolean)
@@ -18,5 +22,5 @@ class URL(db.Model):
     h_tags_order = db.Column(db.Boolean)
     h1_count = db.Column(db.Integer) 
     img_alt = db.Column(db.Boolean)
-    keywords = db.Column(db.String)
+    keywords = db.Column(JSON)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
