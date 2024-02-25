@@ -41,10 +41,10 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="{{ url_for('auth.signup') }}">Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Logout</a>
@@ -56,9 +56,11 @@
 
 
         <!-- Content Block -->
-        {% block content %}
+        <div class="container">
 
-        {% endblock %}
+            {% block content %}{% endblock %}
+
+        </div>
         <!-- end Content Block -->
 
 
