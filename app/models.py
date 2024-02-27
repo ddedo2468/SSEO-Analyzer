@@ -24,3 +24,6 @@ class URL(db.Model):
     img_alt = db.Column(db.Boolean)
     keywords = db.Column(JSON)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return f"URL(id={self.id})"
