@@ -6,7 +6,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 CORS(app)
-
+app.config['SECRET_KEY'] = 'w5xP3K6r8u9xZ2A4d7g9j5n8q1t4w6z9'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/seo-analyzer'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
