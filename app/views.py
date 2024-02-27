@@ -1,5 +1,9 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
+from .utlis import analyze_url
+from app import db
+from .models import URL, User
+import json
 
 views = Blueprint("views", __name__)
 
@@ -13,12 +17,22 @@ def home_page():
 def histosy():
     return "Search History"
 
-@views.route("/analyzer")
+
+
+@views.route("/analyzer", methods=['GET', 'POST'])
 @login_required
 def analyzer():
     
     if request.method == 'POST':
         url = request.form.get('url')
+        url_data = analyze_url(url)
+        new_url = URL(**url_data)
+        new_url.user_id = current_user.id
+        db.session.add(new_url)
+        db.session.commit()
+
+        return render_template('results.html', url_data=url_data)
+
 
     return render_template('seo_analyzer.html')
 

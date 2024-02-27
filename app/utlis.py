@@ -59,7 +59,6 @@ def analyze_url(url):
     body_results = analyze_body(soup)
 
     # Combine results from head and body analysis
-    return {**head_results, **body_results}
-
-
-print(analyze_url('https://zapier.com/blog/best-seo-tools/'))
+    results = {**head_results, **body_results}
+    results['url'] = url
+    return results
