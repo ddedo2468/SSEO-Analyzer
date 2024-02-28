@@ -10,7 +10,7 @@ views = Blueprint("views", __name__)
 @views.route("/home")
 @login_required
 def home_page():
-    return render_template('home.html')
+    return render_template('home.html', user=current_user)
 
 @views.route("/history")
 @login_required
@@ -31,10 +31,10 @@ def analyzer():
         db.session.add(new_url)
         db.session.commit()
 
-        return render_template('results.html', url_data=url_data)
+        return render_template('results.html', url_data=url_data, user=current_user)
 
 
-    return render_template('seo_analyzer.html')
+    return render_template('seo_analyzer.html', user=current_user)
 
 @views.route("/counter")
 @login_required
