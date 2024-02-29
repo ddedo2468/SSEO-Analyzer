@@ -82,7 +82,7 @@
     {% endwith %}
 
         <!-- Content Block -->
-        <div class="container">
+        <div class="container main">
 
             {% block content %}{% endblock %}
 
@@ -91,7 +91,7 @@
 
 
         <!-- Footer -->
-        <footer class="d-flex justify-content-center align-items-center">
+        <footer class="d-flex fixed-bottom justify-content-center align-items-center">
             <div>
                 <p class="text-white text-center">Copy Right 2018 © By Daniels All Rights Reserved</p>
             </div>
@@ -107,12 +107,16 @@
     <style>
     body {
         background-color: #212121;
-        color: white
+        color: white;
     }
-
+    
     footer{
         height: 80px;
         background-color: #1c1c1c;
+    }
+    
+    .main {
+        margin-bottom: 100px;
     }
     </style>
 </html>
