@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1> Results Page </h1>
+
+    <h2> URL: <a href="{{ url_data.url }}">{{ url_data.url }} </a> </h2>
+    <br>
+    <div class="container">
+        {% if url_data.title == 1 and (url_data.title_length >= 55 and url_data.title_length <= 70) %}
+        <div class="card text-white bg-success mb-3 " style="max-width: 18rem;">
+            <div class="card-header">title check</div>
+            <div class="card-body">
+                <h5 class="card-title">title exists</h5>
+                <p class="card-text">good job, your page has a title and it's between 55 to 70 charcters </p>
+            </div>
+        </div>
+        {% elif url_data.title == 1 and not (url_data.title_length >= 55 and url_data.title_length <= 70) %}
+        <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">title check</div>
+            <div class="card-body">
+                <h5 class="card-title">title exists but the length is bad</h5>
+                <p class="card-text"> you title length should be between 55 to 70 charcters </p>
+            </div>
+        </div>
+        {% else %}
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header">title check</div>
+            <div class="card-body">
+                <h5 class="card-title">title doesn't exist</h5>
+                <p class="card-text">your page should have a title and it should be between 55 to 70 charcters</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if url_data.description == 1 %}
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">meta description check</div>
+            <div class="card-body">
+                <h5 class="card-title">meta description exists</h5>
+                <p class="card-text">your page contains a meta description</p>
+            </div>
+        </div>
+
+        {% else %}
+
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header">meta description check</div>
+            <div class="card-body">
+                <h5 class="card-title">meta description exists</h5>
+                <p class="card-text">your page doen't contain meta description</p>
+            </div>
+        </div>
+
+        {% endif %}
+
+        {% if url_data.h1 == 1 and url_data.h1_count == 1 %}
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">h1 check</div>
+            <div class="card-body">
+                <h5 class="card-title">h1 exists and ther's only 1 h1 tag</h5>
+                <p class="card-text">good job, your page contains only 1 h1 tag</p>
+            </div>
+        </div>
+        {% elif url_data.title == 1 and url_data.h1_count > 1 %}
+        <div class="card text-dark bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header">h1 check</div>
+            <div class="card-body">
+                <h5 class="card-title">ther's more than 1 (h1) tag in your page</h5>
+                <p class="card-text"> it's recommended for seo to have only 1 (h1) tag in your page </p>
+            </div>
+        </div>
+        {% else %}
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header">h1 check</div>
+            <div class="card-body">
+                <h5 class="card-title"> h1 doesn't exist</h5>
+                <p class="card-text">your page should contain 1 (h1) tag</p>
+            </div>
+        </div>
+
+        {% endif %}
+
+        {% if url_data.h_tags_order == 1 %}
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">h tags check</div>
+            <div class="card-body">
+                <h5 class="card-title">your h tags are correctly ordered on your page</h5>
+                <p class="card-text">the h tags are in correct order (h1, h2, h3..etc) </p>
+            </div>
+        </div>
+        {% else %}
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header"> h tags check </div>
+            <div class="card-body">
+                <h5 class="card-title"> your h tags order isn't correct </h5>
+                <p class="card-text">your h tags shoud be orderd (h1, h2, h3..etc) </p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if url_data.img_alt == 1 %}
+        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+            <div class="card-header">image alt check</div>
+            <div class="card-body">
+                <h5 class="card-title">all the images contains alt tag</h5>
+                <p class="card-text"> it's recommended to have alt tags for all the images </p>
+            </div>
+        </div>
+        {% else %}
+        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <div class="card-header"> image alt check </div>
+            <div class="card-body">
+                <h5 class="card-title"> some images deosn't have alt </h5>
+                <p class="card-text"> it's recommended to have alt tags for all the images </p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+        <p><strong>Keywords:</strong></p>
+            {% for key, value in url_data.keywords.items() %}
+            <p>{{ key }}: {{ value }}</p>
+            {% endfor %}
+    <style>
+        .container{
+            
+        }
+    </style>
+{% endblock %}
