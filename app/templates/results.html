@@ -83,6 +83,37 @@
         </div>
       </div>
       {% endif %}
+     {% if url_data.h_tags_order == 1 %}
+     <div class=" col-lg-4 col-md-2  ">
+	     <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
+		     <h4>h tags check</h4>
+		     <p class="text-muted"> <span class="bold">your h tags are correctly ordered on your page</span> the h tags are in correct order (h1, h2, h3..etc) </p>
+	     </div>
+     </div>
+     {% else %}
+     <div class=" col-lg-4 col-md-2  ">
+	     <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
+		     <h4>tags check</h4>
+		     <p class="text-muted"> <span class="bold">your h tags order isn't correct</span> your h tags shoud be orderd (h1, h2, h3..etc) </p>
+	     </div>
+     </div>
+     {% endif %}
+
+     {% if url_data.img_alt == 1 %}
+     <div class=" col-lg-4 col-md-2  ">
+	     <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
+		     <h4>image alt check</h4>
+		     <p class="text-muted"> <span class="bold">all the images contains alt tag</span>  it's recommended to have alt tags for all the images  </p>
+	     </div>
+     </div>
+     {% else %}
+     <div class=" col-lg-4 col-md-2  ">
+	     <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
+		     <h4>image alt check</h4>
+		     <p class="text-muted"> <span class="bold">some images deosn't have alt</span>  it's recommended to have alt tags for all the images </p>
+	     </div>
+     </div>
+     {% endif %}
     </div>
 
   </div>
