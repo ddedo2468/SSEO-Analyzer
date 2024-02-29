@@ -1,58 +1,94 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1> Results Page </h1>
+<h1> Results Page </h1>
 <section id="service" class=" bg-body-secondary py-5">
-    <div class="heading text-center">
-      <h2 class="fw-bolder">Result Page</h2>
-      <p>URL: <a href="{{ url_data.url }}"> url_data.url </a></p>
-    </div>
+  <div class="heading text-center">
+    <h2 class="fw-bolder">Result Page</h2>
+    <p>URL: <a href="{{ url_data.url }}"> url_data.url </a></p>
+  </div>
 
-    <div class="container text-center pt-5">
-      <div class="row g-5">
+  <div class="container text-center pt-5">
+    <div class="row g-5">
 
-        {% if url_data.title == 1 and (url_data.title_length >= 55 and url_data.title_length <= 70) %}
-        <div class=" col-lg-4 col-md-2  ">
-          <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
-            <h4>Title check</h4>
-            <p class="text-muted"> <span class="bold">title exists</span> good job ypur page has a title and it is between 55 to 70 charaters </p>
-          </div>
-        </div> 
-        {% elif url_data.title == 1 and not (url_data.title_length >= 55 and url_data.title_length <= 70) %}
-        <div class=" col-lg-4 col-md-2  ">
-          <div class=" serve-item border px-3 border-0 py-5 position-relative bg-warning ">
-            <h4>Title check</h4>
-            <p class="text-muted"> <span class="bold">title exists</span> good job you page has a title and it is between 55 to 70 charaters </p>
-          </div>
+      {% if url_data.title == 1 and (url_data.title_length >= 55 and url_data.title_length <= 70) %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
+          <h4>Title check</h4>
+          <p class="text-muted"> <span class="bold">title exists</span> good job ypur page has a title and it is between 55 to 70 charaters </p>
         </div>
-        {% else %}
-        <div class=" col-lg-4 col-md-2  ">
-          <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
-            <h4>Title check</h4>
-            <p class="text-muted"> <span class="bold">title exists</span> good job ypur page has a title and it is between 55 to 70 charaters </p>
-          </div>
+      </div> 
+      {% elif url_data.title == 1 and not (url_data.title_length >= 55 and url_data.title_length <= 70) %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-warning ">
+          <h4>Title check</h4>
+          <p class="text-muted"> <span class="bold">title exists</span> you title length should be between 55 to 70 charcters </p>
         </div>
-        {% endif %}
+      </div>
+      {% else %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
+          <h4>Title check</h4>
+          <p class="text-muted"> <span class="bold">title doesn't exist</span> your page should have a title and it should be between 55 to 70 charcters </p>
+        </div>
+      </div>
+      {% endif %}
 
-        <div class=" col-lg-4 col-md-2  ">
-          <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
-            <h4>Title check</h4>
-            <p class="text-muted"> <span class="bold">title exists</span> good job ypur page has a title and it is between 55 to 70 charaters </p>
-          </div>
+      {% if url_data.description == 1 %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
+          <h4>Description Check</h4>
+          <p class="text-muted"> <span class="bold">meta description exists</span> your page contains a meta description </p>
         </div>
-
-        <div class=" col-lg-4 col-md-2  ">
-          <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
-            <h4>Title check</h4>
-            <p class="text-muted"> <span class="bold">title exists</span> good job ypur page has a title and it is between 55 to 70 charaters </p>
-          </div>
-        </div>
-   
       </div>
 
+      {% else %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
+          <h4>Description Check</h4>
+          <p class="text-muted"> <span class="bold">meta description doesn't exist</span> your page doen't contain meta description </p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if url_data.h1 == 1 and url_data.h1_count == 1 %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
+          <h4>Description Check</h4>
+          <p class="text-muted"> <span class="bold">meta description exists</span> your page contains a meta description </p>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if url_data.h1 == 1 and url_data.h1_count == 1 %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
+          <h4>h1 tag Check</h4>
+          <p class="text-muted"> <span class="bold"> h1 exists and ther's only 1 h1 tag </span> good job, your page contains only 1 h1 tag </p>
+        </div>
+      </div> 
+
+      {% elif url_data.h1 == 1 and url_data.h1_count > 1 %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-warning ">
+          <h4>h1 tag Check</h4>
+          <p class="text-muted"> <span class="bold"> ther's more than 1 (h1) tag in your page </span> it's recommended for seo to have only 1 (h1) tag in your page </p>
+        </div>
+      </div>
+
+      {% else %}
+      <div class=" col-lg-4 col-md-2  ">
+        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
+          <h4>h1 tag Check</h4>
+          <p class="text-muted"> h1 doesn't exist <span class="bold"> your page should contain 1 (h1) tag </span> </p>
+        </div>
+      </div>
+      {% endif %}
     </div>
-  </section>
-        <p><strong>Keywords:</strong></p>
-            {% for key, value in url_data.keywords.items() %}
-            <p>{{ key }}: {{ value }}</p>
-            {% endfor %}
+
+  </div>
+</section>
+<p><strong>Keywords:</strong></p>
+{% for key, value in url_data.keywords.items() %}
+<p>{{ key }}: {{ value }}</p>
+{% endfor %}
 {% endblock %}
