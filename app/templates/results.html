@@ -13,21 +13,21 @@
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
           <h4>Title check</h4>
-          <p class="text-muted"> <span class="bold">title exists</span> good job ypur page has a title and it is between 55 to 70 charaters </p>
+          <p class="text-muted"> <span class="bold"> Passed </span> good job ypur page has a title and it is between 55 to 70 charaters </p>
         </div>
       </div> 
       {% elif url_data.title == 1 and not (url_data.title_length >= 55 and url_data.title_length <= 70) %}
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-warning ">
           <h4>Title Check</h4>
-          <p class="text-muted"> <span class="bold">title exists</span> you title length should be between 55 to 70 charcters </p>
+          <p class="text-muted"> <span class="bold"> Warning </span> you title length should be between 55 to 70 charcters </p>
         </div>
       </div>
       {% else %}
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
           <h4>Title Check</h4>
-          <p class="text-muted"> <span class="bold">title doesn't exist</span> your page should have a title and it should be between 55 to 70 charcters </p>
+          <p class="text-muted"> <span class="bold"> didn't Pass </span> your page should have a title and it should be between 55 to 70 charcters </p>
         </div>
       </div>
       {% endif %}
@@ -36,7 +36,7 @@
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
           <h4>Description Check</h4>
-          <p class="text-muted"> <span class="bold">meta description exists</span> your page contains a meta description </p>
+          <p class="text-muted"> <span class="bold"> Pass </span> your page contains a meta description </p>
         </div>
       </div>
 
@@ -44,16 +44,7 @@
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
           <h4>Description Check</h4>
-          <p class="text-muted"> <span class="bold">meta description doesn't exist</span> your page doen't contain meta description </p>
-        </div>
-      </div>
-      {% endif %}
-
-      {% if url_data.h1 == 1 and url_data.h1_count == 1 %}
-      <div class=" col-lg-4 col-md-2  ">
-        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
-          <h4>Description Check</h4>
-          <p class="text-muted"> <span class="bold">meta description exists</span> your page contains a meta description </p>
+          <p class="text-muted"> <span class="bold"> didn't Pass </span> your page doen't contain meta description </p>
         </div>
       </div>
       {% endif %}
@@ -62,7 +53,7 @@
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
           <h4>H1 Tag Check</h4>
-          <p class="text-muted"> <span class="bold"> h1 exists and ther's only 1 h1 tag </span> good job, your page contains only 1 h1 tag </p>
+          <p class="text-muted"> <span class="bold"> Passed </span> good job, your page contains only 1 h1 tag </p>
         </div>
       </div> 
 
@@ -70,7 +61,7 @@
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-warning ">
           <h4>H1 Tag Check</h4>
-          <p class="text-muted"> <span class="bold"> ther's more than 1 (h1) tag in your page </span> it's recommended for seo to have only 1 (h1) tag in your page </p>
+          <p class="text-muted"> <span class="bold"> Warning </span> it's recommended for seo to have only 1 (h1) tag in your page </p>
         </div>
       </div>
 
@@ -78,7 +69,7 @@
       <div class=" col-lg-4 col-md-2  ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
           <h4>H1 Tag Check</h4>
-          <p class="text-muted"> h1 doesn't exist <span class="bold"> your page should contain 1 (h1) tag </span> </p>
+          <p class="text-muted"> didn't Pass <span class="bold"> your page should contain 1 (h1) tag </span> </p>
         </div>
       </div>
       {% endif %}
@@ -86,14 +77,14 @@
       <div class=" col-lg-4 col-md-2  mt-3">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
           <h4>h Tags Check</h4>
-          <p class="text-muted"> <span class="bold">your h tags are correctly ordered on your page</span> the h tags are in correct order (h1, h2, h3..etc) </p>
+          <p class="text-muted"> <span class="bold"> Pass </span> the h tags are in correct order (h1, h2, h3..etc) </p>
         </div>
       </div>
       {% else %}
       <div class=" col-lg-4 col-md-2  mt-3">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
         <h4>Tags Check</h4>
-          <p class="text-muted"> <span class="bold">your h tags order isn't correct</span> your h tags shoud be orderd (h1, h2, h3..etc) </p>
+          <p class="text-muted"> <span class="bold">didn't Pass</span> your h tags shoud be orderd (h1, h2, h3..etc) </p>
         </div>
       </div>
       {% endif %}
@@ -102,14 +93,14 @@
       <div class=" col-lg-4 col-md-2 mt-3 ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-success ">
           <h4>Image Alt Check</h4>
-          <p class="text-muted"> <span class="bold">all the images contains alt tag</span>  it's recommended to have alt tags for all the images  </p>
+          <p class="text-muted"> <span class="bold"> Passed </span>  it's recommended to have alt tags for all the images  </p>
         </div>
       </div>
       {% else %}
       <div class=" col-lg-4 col-md-2 mt-3 ">
         <div class=" serve-item border px-3 border-0 py-5 position-relative bg-danger ">
           <h4>Image Alt Check</h4>
-          <p class="text-muted"> <span class="bold">some images deosn't have alt</span>  it's recommended to have alt tags for all the images </p>
+          <p class="text-muted"> <span class="bold">didn't Pass</span>  it's recommended to have alt tags for all the images </p>
         </div>
       </div>
       {% endif %}
@@ -137,12 +128,6 @@
   .serve-item p {
     color: black;
   }
-
-  .col-lg-4 {
-    min-height: 100%;
-  }
-
-
 
 </style>
 
