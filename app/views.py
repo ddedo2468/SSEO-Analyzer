@@ -12,12 +12,19 @@ views = Blueprint("views", __name__)
 def home_page():
     return render_template('home.html', user=current_user)
 
-@views.route("/history")
+@views.route("/history", methods=['GET'])
 @login_required
 def histosy():
-    return "Search History"
+    user_urls = URL.query.filter_by(user_id=current_user.id).all()
+    return render_template('history.html', user=current_user, user_urls=user_urls)
 
 
+@views.route("/results/<string:url>", methods=['GET', 'POST'])
+@login_required
+def show_result(url):
+    url_data = URL.query.filter_by(url=url).first()
+    print(url_data)
+    return render_template('results.html', url_data=url_data, user=current_user)
 
 @views.route("/analyzer", methods=['GET', 'POST'])
 @login_required
