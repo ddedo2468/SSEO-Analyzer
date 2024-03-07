@@ -29,9 +29,9 @@
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
                     <li><a href="{{ url_for('views.home_page') }}">Home</a></li>
-                    <li><a href="/">History</a></li>
+                    <li><a href="{{ url_for('views.home_page') }}">History</a></li>
                     <li class="services">
-                        <a href="/">Tools</a>
+                        <a href="{{ url_for('views.home_page') }}">Tools</a>
                         <!-- DROPDOWN MENU -->
                         <ul class="dropdown">
                             <li><a href="{{ url_for('views.analyzer') }}">Seo Analyzer</a></li>
