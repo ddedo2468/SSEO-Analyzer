@@ -6,13 +6,7 @@ from nltk import bigrams
 
 def get_soup(url):
     """Get BeautifulSoup object from URL."""
-    #res = requests.get(url)
-    try:
-        res = requests.get(url)
-    except requests.exceptions.RequestException as e:
-        print("Error fetching URL:", e)
-        return None  # Or handle the error differently
-
+    res = requests.get(url)
     return BeautifulSoup(res.content, "html.parser")
 
 def analyze_head(soup):
@@ -45,15 +39,8 @@ def analyze_body(soup):
     body_text = soup.find('body').get_text().lower()
     words = [word for word in word_tokenize(body_text) if word.isalpha()]
 
-    """with open('english', 'r') as file:
-        stopwords = set(line.strip() for line in file)"""
-    try:
-        with open('english', 'r') as file:
-            stopwords = set(line.strip() for line in file)
-    except FileNotFoundError:
-        print("Error: 'english' file not found.")
-        stopwords = set()  # Or provide a default set
-
+    with open('english', 'r') as file:
+        stopwords = set(line.strip() for line in file)
 
     filtered_words = [word for word in words if word not in stopwords]
     new_bigrams = list(bigrams(filtered_words))

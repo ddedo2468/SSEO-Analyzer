@@ -1,44 +1,57 @@
 {% extends 'base.html' %}
 {% block content %}
-<section id="service" class=" bg-body-secondary py-5">
-  <div class="heading text-center">
-    <h2 class="fw-bolder">Tools Avilable</h2>
-  </div>
+  <div class="ag-format-container">
+    <div class="ag-tools_box">
+      <div class="ag-tools_item">
+        <a href="#" class="ag-tools-item_link">
+          <div class="ag-tools-item_bg"></div>
 
-  <div class="container text-center pt-5">
-    <div class="row g-5">
-      <div class=" col-lg-4 col-md-2  ">
-        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-info ">
-          <h4>Seo Page Analyzer</h4>
-          <p class="text-muted"> Analyze your website page for SEO </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+          <div class="ag-tools-item_title">
+            Seo Analyzer
+          </div>
+
+          <div class="ag-tools-item_status-box">
+            Status:
+            <span class="ag-tools-item_status">
+              Avilable
+            </span>
+          </div>
+        </a>
       </div>
 
-      <div class=" col-lg-4 col-md-2  ">
-        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-info ">
-          <h4>Words Counter</h4>
-          <p class="text-muted"> Count A the Words in an Article </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+      <div class="ag-tools_item">
+        <a href="#" class="ag-tools-item_link">
+          <div class="ag-tools-item_bg"></div>
+
+          <div class="ag-tools-item_title">
+            Web Crawler
+          </div>
+
+          <div class="ag-tools-item_status-box">
+            Status:
+            <span class="ag-tools-item_status">
+              Soon
+            </span>
+          </div>
+        </a>
       </div>
 
-      <div class=" col-lg-4 col-md-2  ">
-        <div class=" serve-item border px-3 border-0 py-5 position-relative bg-info ">
-          <h4>Web Crawler</h4>
-          <p class="text-muted"> Crawl a webpage to check the backlinks </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+      <div class="ag-tools_item">
+        <a href="#" class="ag-tools-item_link">
+          <div class="ag-tools-item_bg"></div>
 
+          <div class="ag-tools-item_title">
+            Word Counter
+          </div>
+
+          <div class="ag-tools-item_status-box">
+            Status:
+            <span class="ag-tools-item_status">
+              Soon
+            </span>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
-</section>
-
-<style>
-  p.text-muted {
-    color: black !important;
-  }
-</style>
-
-{% endblock %}
+  {% endblock %}

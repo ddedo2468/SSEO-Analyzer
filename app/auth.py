@@ -14,23 +14,10 @@ def login():
         return redirect(url_for('views.home_page'))
 
     if request.method == 'POST':
-        #email = request.form.get('email')
-        try:
-            email = request.form.get('email')
-            if not email or len(email) < 4:
-                raise ValueError("Invalid email address.")
-        except ValueError as e:
-            flash(str(e), category='error')
-
+        email = request.form.get('email')
         password = request.form.get('password')
 
-        #user = User.query.filter_by(email=email).first()
-        try:
-                user = User.query.filter_by(email=email).first()
-        except SQLAlchemyError as e:
-                flash("Database error occurred.", category='error')
-                return render_template('error.html')  # Or log the error and redirect
-
+        user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
                 flash("Logged in!", category='success')

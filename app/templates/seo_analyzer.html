@@ -1,20 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="POST">
-  <h3 align="center">SEO ANALYZER</h3>
-  <div class="form-group">
-    <label for="url">URL</label>
-    <input
-      type="text"
-      id="url"
-      name="url"
-      class="form-control"
-      placeholder="Enter the URL"
-    />
-    <br />
-    <div align="center">
-      <button class="btn btn-primary" type="submit">Submit</button>
+<div class="container5">
+  <form method="POST" class="urlinput">
+    <div class="form__group">
+      <input class="form__input" type="text" id="url" name="url"
+        placeholder="Enter the URL" required="" />
+      <label for="name" class="form__label">Full URL</label>
     </div>
-  </div>
-</form>
-{% endblock %}
+    <button type="submit"> Analyze </button>
+  </form>
+</div>
+  {% endblock %}
