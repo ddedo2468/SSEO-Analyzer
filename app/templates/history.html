@@ -3,8 +3,7 @@
 {% block content %}
 <h1>Search History for {{ user.user_name }}</h1>
 
-		{% for url in user_urls %}
-<a href=/results/{{ url.url }}> {{url.url}} </a>
-		{% endfor %}
+{% for url in user_urls %}
+	<a href="{{ url_for('views.show_result', url=url.url) }}"> {{ url.url }} </a>
+{% endfor %}
 {% endblock %}
-

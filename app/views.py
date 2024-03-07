@@ -4,6 +4,7 @@ from .utlis import analyze_url
 from app import db
 from .models import URL, User
 import json
+from urllib.parse import unquote
 
 views = Blueprint("views", __name__)
 
@@ -19,10 +20,11 @@ def histosy():
     return render_template('history.html', user=current_user, user_urls=user_urls)
 
 
-@views.route("/results/<string:url>", methods=['GET', 'POST'])
+@views.route("/results/<path:url>", methods=['GET', 'POST'])
 @login_required
 def show_result(url):
-    url_data = URL.query.filter_by(url=url).first()
+    decoded_url = unquote(url)
+    url_data = URL.query.filter_by(url=decoded_url).first()
     print(url_data)
     return render_template('results.html', url_data=url_data, user=current_user)
 
