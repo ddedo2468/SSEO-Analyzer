@@ -1,9 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Search History for {{ user.user_name }}</h1>
 
-{% for url in user_urls %}
-	<a href="{{ url_for('views.show_result', url=url.url) }}"> {{ url.url }} </a>
-{% endfor %}
-{% endblock %}
+    <h1 class="urlh">Search History for {{ user.user_name }}</h1>
+    <table class="table-container">
+        <thead>
+            <tr>
+                <th>
+                    <h1>URL</h1>
+                </th>
+                <th>
+                    <h1>Analyze Time</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for url in user_urls %}
+            <tr>
+                <td><a class="link" href="{{ url_for('views.show_result', url=url.url) }}"> {{ url.url }} </a>
+                </td>
+                <td>{{ url.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}

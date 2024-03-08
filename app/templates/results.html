@@ -54,10 +54,10 @@
 
     {% if url_data.h1 == 1 and url_data.h1_count == 1 %}
     <div class="resultcard pass">
-        <div class="card-details">
+        <div class="resultcard-details">
             <p class="text-title">H1 Tag Check</p>
-            <span> Passed </span>
-            <p class="text-body"> good job, your page contains only 1 h1 tag </p>
+            <span> Passed</span>
+            <p class="text-body">good job, your page contains only 1 h1 tag</p>
         </div>
     </div>
     {% elif url_data.h1 == 1 and url_data.h1_count > 1 %}
@@ -99,18 +99,18 @@
     {% endif %}
 
     {% if url_data.img_alt == 1 %}
-    <div class="resultcard pass">
+    <div class="resultcard error">
         <div class="resultcard-details">
             <p class="text-title">Image Alt Check</p>
-            <span>Passed</span>
+            <span>Not Passed</span>
             <p class="text-body">it's recommended to have alt tags for all the images</p>
         </div>
     </div>
     {% else %}
-    <div class="resultcard error">
+    <div class="resultcard pass">
         <div class="resultcard-details">
             <p class="text-title">Image Alt Check</p>
-            <span> Not Passed</span>
+            <span>Passed</span>
             <p class="text-body">it's recommended to have alt tags for all the images </p>
         </div>
     </div>

@@ -2,11 +2,16 @@ from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from .utlis import analyze_url
 from app import db
+from app import app
 from .models import URL, User
 import json
 from urllib.parse import unquote
 
 views = Blueprint("views", __name__)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html', user=current_user), 404
 
 @views.route("/home")
 @login_required
@@ -15,7 +20,7 @@ def home_page():
 
 @views.route("/history", methods=['GET'])
 @login_required
-def histosy():
+def history():
     user_urls = URL.query.filter_by(user_id=current_user.id).all()
     return render_template('history.html', user=current_user, user_urls=user_urls)
 
@@ -25,7 +30,6 @@ def histosy():
 def show_result(url):
     decoded_url = unquote(url)
     url_data = URL.query.filter_by(url=decoded_url).first()
-    print(url_data)
     return render_template('results.html', url_data=url_data, user=current_user)
 
 @views.route("/analyzer", methods=['GET', 'POST'])

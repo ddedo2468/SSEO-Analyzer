@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='seo_analyzer.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='404.css') }}" />
     <title>SSA</title>
 </head>
 
@@ -29,7 +31,7 @@
                 <!-- NAVIGATION MENUS -->
                 <div class="menu">
                     <li><a href="{{ url_for('views.home_page') }}">Home</a></li>
-                    <li><a href="{{ url_for('views.home_page') }}">History</a></li>
+                    <li><a href="{{ url_for('views.history') }}">History</a></li>
                     <li class="services">
                         <a href="{{ url_for('views.home_page') }}">Tools</a>
                         <!-- DROPDOWN MENU -->
