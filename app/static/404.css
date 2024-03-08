@@ -1,9 +1,9 @@
 .page_404 {
     padding: 40px 0;
-    font-family: 'Arvo', serif;
     width: 720px;
     margin: 0 auto;
     text-align: center;
+    color: white;
 }
 
 .page_404 img {
