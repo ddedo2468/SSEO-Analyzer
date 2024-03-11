@@ -1,10 +1,11 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
+from sqlalchemy.orm.attributes import set_attribute
 from .utlis import analyze_url
 from app import db
 from app import app
 from .models import URL, User
-import json
+from datetime import datetime
 from urllib.parse import unquote
 
 views = Blueprint("views", __name__)
@@ -38,12 +39,24 @@ def analyzer():
     
     if request.method == 'POST':
         url = request.form.get('url')
-        
-        url_data = analyze_url(url)
-        new_url = URL(**url_data)
-        new_url.user_id = current_user.id
-        db.session.add(new_url)
-        db.session.commit()
+
+        url_exists = URL.query.filter_by(url=url, user_id=current_user.id).first()
+
+        if url_exists:
+            url_data = analyze_url(url)
+            for key, value in url_data.items():
+                set_attribute(url_exists, key, value)
+            url_exists.update()
+            db.session.commit()
+            flash("url updated", "success")
+        else:
+            url_data = analyze_url(url)
+            new_url = URL(**url_data)
+            new_url.user_id = current_user.id
+            db.session.add(new_url)
+            db.session.commit()
+            flash("url created", "success")
+
 
         return render_template('results.html', url_data=url_data, user=current_user)
 

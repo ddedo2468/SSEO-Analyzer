@@ -28,3 +28,8 @@ class URL(db.Model):
 
     def __repr__(self):
         return f"URL(id={self.id})"
+
+    
+    def update(self):
+        """updates the attribute 'updated_at' with the current datetime"""
+        self.created_at = datetime.utcnow()
