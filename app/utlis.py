@@ -21,21 +21,22 @@ def analyze_head(soup):
 
     return results
 
-def analyze_body(soup):
-    """Analyze HTML body section."""
-    results = {}
+def analyze_h_tags_order(soup):
 
-    h1 = soup.find('h1')
-    results['h1'] = 1 if h1 else 0
+    headings = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 
-    h_tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-    h_tags_order = [int(tag.name[1]) for tag in soup.find_all(h_tags)]
-    results['h_tags_order'] = 1 if len(set(h_tags_order)) != len(h_tags_order) else 0
+    previous_level = 0
+    for heading in headings:
+        current_level = int(heading.name[1])
 
-    results['h1_count'] = len(soup.find_all('h1'))
+        if current_level > previous_level + 1:
+            return 0
 
-    results['img_alt'] = 1 if soup.find('img', alt='') else 0
+        previous_level = current_level
 
+    return 1
+
+def get_keywords(soup):
     body_text = soup.find('body').get_text().lower()
     words = [word for word in word_tokenize(body_text) if word.isalpha()]
 
@@ -49,7 +50,24 @@ def analyze_body(soup):
     most_common_bigram_strings = [" ".join(bigram) for bigram, freq in bi_freq]
     keywords_dict = {str(i + 1): keyword for i, keyword in enumerate(most_common_bigram_strings)}
 
-    results['keywords'] = keywords_dict
+    return keywords_dict
+
+
+
+def analyze_body(soup):
+    """Analyze HTML body section."""
+    results = {}
+
+    results['h1'] = 1 if soup.find('h1') else 0
+
+    results['h_tags_order'] = analyze_h_tags_order(soup)
+
+    results['h1_count'] = len(soup.find_all('h1'))
+
+    results['img_alt'] = 1 if soup.find('img', alt='') else 0
+
+    results['keywords'] = get_keywords(soup)
+
     return results
 
 def analyze_url(url):
@@ -58,7 +76,7 @@ def analyze_url(url):
     head_results = analyze_head(soup)
     body_results = analyze_body(soup)
 
-    # Combine results from head and body analysis
     results = {**head_results, **body_results}
     results['url'] = url
+
     return results

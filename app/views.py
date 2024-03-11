@@ -38,6 +38,7 @@ def analyzer():
     
     if request.method == 'POST':
         url = request.form.get('url')
+        
         url_data = analyze_url(url)
         new_url = URL(**url_data)
         new_url.user_id = current_user.id

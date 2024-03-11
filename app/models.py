@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
 class URL(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.DateTime, default=datetime.now())
+    created_at = db.Column(db.DateTime, default=datetime.utcnow())
     url = db.Column(db.String(length=255), nullable=False)
     title = db.Column(db.Boolean, default=False, nullable=False)
     title_length = db.Column(db.Integer)
