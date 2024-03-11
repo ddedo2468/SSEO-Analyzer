@@ -53,6 +53,7 @@ def analyzer():
             url_data = analyze_url(url)
             new_url = URL(**url_data)
             new_url.user_id = current_user.id
+            new_url.update()
             db.session.add(new_url)
             db.session.commit()
             flash("url created", "success")
@@ -71,4 +72,4 @@ def counter():
 @views.route("/crawler")
 @login_required
 def crawler():
-    return "comming soon"
+   return "comming soon"
