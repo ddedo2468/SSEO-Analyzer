@@ -55,6 +55,6 @@ SSEO-Analyzer/
 
 This project is licensed under [License Name] (replace with the actual license used).
 
-**Authors**
-Aya Tarek - aya.tarek213@icloud.com
-Abdullah Musbah - abdallahmosbah25@gmail.com
+## Authors
+Abdullah Mosbah - [Github](https://github.com/ddedo2468/) / [Twitter](https://twitter.com/xARMANEx) - <abdallahmosbah25@gmail.com>
+Aya Tarek       - [Github](https://github.com/AyaTarek95/) / [Twitter](https://twitter.com/ayatarek0000) <aya.tarek213@icloud.com>
