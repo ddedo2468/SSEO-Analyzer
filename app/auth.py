@@ -4,6 +4,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 from .models import User
 
+"""Handles user authentication functionality for the application, including login, signup, and logout."""
+
 auth = Blueprint("auth", __name__)
 
 

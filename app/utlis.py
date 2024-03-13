@@ -22,7 +22,7 @@ def analyze_head(soup):
     return results
 
 def analyze_h_tags_order(soup):
-
+    """Analyze h tags order """
     headings = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
 
     previous_level = 0
@@ -37,6 +37,7 @@ def analyze_h_tags_order(soup):
     return 1
 
 def get_keywords(soup):
+    """returns keywords in pairs"""
     body_text = soup.find('body').get_text().lower()
     words = [word for word in word_tokenize(body_text) if word.isalpha()]
 

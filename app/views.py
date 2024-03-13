@@ -7,6 +7,8 @@ from app import app
 from .models import URL, User
 from datetime import datetime
 from urllib.parse import unquote
+"""Handles Core Views and URL Analysis for Application Functionality"""
+
 
 views = Blueprint("views", __name__)
 
