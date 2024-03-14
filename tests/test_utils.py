@@ -1,6 +1,7 @@
 import unittest
-from unittest.mock import patch, MagicMock  # For mocking external dependencies
+from unittest.mock import patch, MagicMock
 from app import app
+from app.utlis import get_soup, analyze_url, analyze_head, analyze_body, analyze_h_tags_order, get_keywords
 import requests
 from bs4 import BeautifulSoup
 
